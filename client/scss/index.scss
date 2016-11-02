@@ -99,6 +99,13 @@ img.adp-marker {
   margin: 5px;
 }
 
+.danger {
+  color: $color-danger !important;
+}
+.safe {
+  color: $color-safe !important;
+}
+
 @media only screen and (max-width: 767px)  {
   .ui.stackable.grid {
     .row {

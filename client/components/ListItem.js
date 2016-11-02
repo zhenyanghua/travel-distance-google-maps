@@ -36,16 +36,65 @@ class ListItem extends React.Component {
               <i className="flag icon"></i>
               <span>{attrs.formatted_address}</span>
             </div>
+            {
+              !attrs.last &&
+              (<div>
+                {
+                  attrs.drive_time &&
+                  <br/>
+                }
+                {
+                  attrs.drive_time &&
+                  (<div className="safe description">
+                    <i className="icon"></i>
+                    <span>{attrs.drive_time}</span>
+                  </div>)
+                }
+                {
+                  attrs.transactions_interval &&
+                  (<div className="safe description">
+                    <i className="icon"></i>
+                    <span>{attrs.transactions_interval}</span>
+                  </div>)
+                }
+              </div>)
+            }
+            {
+              attrs.last &&
+              (<div>
+                  <div className="header">
+                    <br/>
+                    <i className="warning sign icon"></i>
+                    Something is not right:
+                  </div>
+                  {
+                    attrs.drive_time &&
+                    (<div className="danger description">
+                      <i className="icon"></i>
+                      <span>{attrs.drive_time}</span>
+                    </div>)
+                  }
+                  {
+                    attrs.transactions_interval &&
+                    (<div className="danger description">
+                      <i className="icon"></i>
+                      <span>{attrs.transactions_interval}</span>
+                    </div>)
+                  }
+                </div>
+              )
+            }
+
           </div>
-          {
-            attrs.transaction_type !== 'online' && !attrs.last ?
+          {/*
+            attrs.transaction_type !== 'online' && !attrs.last &&
               (<div className="content operations">
                 <div className="tiny ui basic button" onClick={() => this.showTravelArea(point, radius)}>
                   <i className="red map pin icon"></i>
                   Show Travel Area
                 </div>
-              </div>) : null
-          }
+              </div>)
+          */}
         </div>
       </div>
     )

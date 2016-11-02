@@ -56,7 +56,9 @@ var stores = {
             "text": "19 mins",
             "value": 1148
           }
-        }
+        },
+        "drive_time": "Dive time = 19 minutes",
+        "transactions_interval": "Transactions interval = 8 hours",
       }
     },
     {
@@ -85,7 +87,9 @@ var stores = {
             "text": "16 mins",
             "value": 974
           }
-        }
+        },
+        "drive_time": "Dive time = 19 minutes",
+        "transactions_interval": "Transactions interval = 3 hours",
       }
     },
     {
@@ -158,7 +162,9 @@ var stores = {
             "text": "6 mins",
             "value": 347
           }
-        }
+        },
+        "drive_time": "Dive time = 16 minutes",
+        "transactions_interval": "Transactions interval = 20 hours",
       }
     },
     {
@@ -179,8 +185,41 @@ var stores = {
         "transaction_type": "in-store",
         "fake": 0,
         "matrix": {
+          "distance": {
+            "text": "19.0 mi",
+            "value": 30628
+          },
+          "duration": {
+            "text": "22 mins",
+            "value": 1317
+          }
+        },
+        "drive_time": "Dive time = 6 minutes",
+        "transactions_interval": "Transactions interval = 5 hours",
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2720896,
+          39.9414189
+        ]
+      },
+      "properties": {
+        "id": "bad-one-last",
+        "formatted_address": "121 W Main St, West Jefferson, OH 43162, USA",
+        "formatted_phone_number": "(614) 879-7777",
+        "name": "Flyers Pizza",
+        "transaction_time": '10/21/2016 10:18:12 PM',
+        "transaction_type": "in-store",
+        "fake": 2,
+        "matrix": {
 
         },
+        "drive_time": "Dive time = 22 minutes",
+        "transactions_interval": "Transactions interval = 3 minutes",
         "last": true
       }
     }

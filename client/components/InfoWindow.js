@@ -35,20 +35,67 @@ class InfoWindow extends React.Component {
             <span>{feature.getProperty('formatted_phone_number') || 'N/A'}</span>
           </div>
           <br />
-          { !!feature.getProperty('opening_hours') ?
-            feature.getProperty('opening_hours').map((x, i) => (
-            <div className="description" key={i}>{x}</div>
-          )) : null}
+          {
+            !!feature.getProperty('opening_hours') &&
+              feature.getProperty('opening_hours').map((x, i) => (
+              <div className="description" key={i}>{x}</div>
+            ))
+          }
+          {
+            !feature.getProperty('last') &&
+            (<div>
+              {
+                feature.getProperty('drive_time') &&
+                (<div className="safe description">
+                  <i className="icon"></i>
+                  <span>{feature.getProperty('drive_time')}</span>
+                </div>)
+              }
+              {
+                feature.getProperty('transactions_interval') &&
+                (<div className="safe description">
+                  <i className="icon"></i>
+                  <span>{feature.getProperty('transactions_interval')}</span>
+                </div>)
+              }
+            </div>)
+          }
+          {
+            feature.getProperty('last') &&
+            (
+              <div>
+                <div className="header">
+                  <br/>
+                  <i className="warning sign icon"></i>
+                  Something is not right:
+                </div>
+                {
+                  feature.getProperty('drive_time') &&
+                  (<div className="danger description">
+                    <i className="icon"></i>
+                    <span>{feature.getProperty('drive_time')}</span>
+                  </div>)
+                }
+                {
+                  feature.getProperty('transactions_interval') &&
+                  (<div className="danger description">
+                    <i className="icon"></i>
+                    <span>{feature.getProperty('transactions_interval')}</span>
+                  </div>)
+                }
+              </div>
+            )
+          }
         </div>
-        {
-          feature.getProperty('transaction_type') !== 'online' &&
-            !feature.getProperty('last') ?
+        {/*
+          (feature.getProperty('transaction_type') !== 'online' &&
+            !feature.getProperty('last')) &&
             (<div className="content">
               <button className="ui button" onClick={() => this.showTravelArea(point, radius)}>
                 <i className="red map pin icon"></i>Show Travel Area
               </button>
-            </div>) : null
-        }
+            </div>)
+        */}
 
       </div>
     )

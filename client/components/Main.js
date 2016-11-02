@@ -56,7 +56,7 @@ class Main extends React.Component {
     }).then(gmaps => {
       this.map = new gmaps.Map(ReactDOM.findDOMNode(this.refs.map), {
         center: new gmaps.LatLng(39.9663943,-82.9827314),
-        zoom: 12,
+        zoom: 11,
         // styles: this.setMapStyle()
       })
       // this.locateMe()
@@ -68,10 +68,16 @@ class Main extends React.Component {
 
       this.circle = new gmaps.Circle({
         map: this.map,
-        clickable: false
+        clickable: false,
+        fillColor: 'green',
+        fillOpacity: 0.15,
+        strokeColor: 'green'
       })
       this.props.updateListFromExtent(stores.features)
       // gmaps.event.addListener(this.map, 'bounds_changed', () => this.updateListFromExtent())
+
+      this.map.data.addListener('mouseover', (e) => this.onMouseover(e))
+      this.map.data.addListener('mouseout', (e) => this.onMouseout(e))
     })
   }
 
@@ -173,6 +179,21 @@ class Main extends React.Component {
       this.infoWindow.setPosition(point)
       this.infoWindow.open(this.map)
     })
+  }
+
+  onMouseover(event) {
+    this.map.data.revertStyle()
+    this.map.data.overrideStyle(event.feature, {
+      icon: {
+        url: 'public/images/store-blue.png',
+        anchor: new google.maps.Point(16, 0),
+        scaledSize: new google.maps.Size(26, 26)
+      }
+    })
+  }
+
+  onMouseout() {
+    this.map.data.revertStyle()
   }
 
   componentDidUpdate() {
