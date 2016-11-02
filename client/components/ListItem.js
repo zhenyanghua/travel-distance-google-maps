@@ -22,7 +22,7 @@ class ListItem extends React.Component {
         </h4>
         <div className="ui attached segment">
           <div className="content details">
-            <a className="header" href={'#/' + attrs.name}>
+            <a className="header" onClick={() => this.moveTo(point)}>
               {attrs.name} &nbsp;
               <span className={"ui mini basic label " + colorMap[attrs.fake]}>
                 {attrs.transaction_type}
@@ -117,6 +117,10 @@ class ListItem extends React.Component {
     const {circle} = this.props
     circle.setCenter(pos)
     circle.setRadius(radius)
+  }
+
+  moveTo(pos) {
+    this.map.panTo(pos);
   }
 }
 export default ListItem
